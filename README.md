@@ -9,41 +9,30 @@ Sockets Links.
  server .
 4. Send and receive the message using the send function in socket.
 ## PROGRAM
-
-### CLIENT :
-```
-
-# NAME : BALAJI.A
-# REG NO : 212223040023
-
-
-import socket 
-s=socket.socket() 
-s.connect(('localhost',8000)) 
-while True:
-    msg=input("Client > ") 
-    s.send(msg.encode()) 
-    print("Server > ",s.recv(1024).decode())
-```
-
-### SERVER :
-```
-
-# NAME : Vinodhini K
-# REG NO : 212223230245
-
+### Server Side
+```python
 import socket
 s=socket.socket()
-s.connect(('localhost',8000))
+s.bind(('localhost',90))
+s.listen(5)
+c,addr=s.accept()
 while True:
- print(s.recv(1024).decode())
- s.send("Acknowledgement Recived".encode())
+ ClientMessage=c.recv(1024).decode()
+ c.send(ClientMessage.encode())
 ```
+### Client Side
+```python
+import socket
+s=socket.socket()
+s.connect(('localhost',90))
+while True:
+ msg=input("Client > ")
+ s.send(msg.encode())
+ print("Server > ",s.recv(1024).decode())
+```
+## OUTPUT
+![Echo Client and Server using TCP Sockets](https://github.com/Aakashraj04/3a.Sockets_Creation_for_Echo_Client_and_Echo_Server/assets/121117266/f4e589ec-f630-44a7-8392-cfeb331f28e3)
 
-## OUPUT :
-
-![image](https://github.com/user-attachments/assets/e052a5a5-6151-4e1b-9a09-53ad94d2fb0a)
-
-## RESULT :
+## RESULT
 Thus, the python program for creating Echo Client and Echo Server using TCP Sockets Links 
 was successfully created and executed.
